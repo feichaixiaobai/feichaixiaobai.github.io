@@ -5,7 +5,7 @@
 
 // Recommended to use absolute path for live2d_path parameter
 // live2d_path 参数建议使用绝对路径
-const live2d_path = 'https://zblog.15937.top/live2d-widget/dist/';
+const live2d_path = '/live2d-widget/dist/';
 // const live2d_path = '/dist/';
 
 // Method to encapsulate asynchronous resource loading
