@@ -452,20 +452,101 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>站点导航（测试）</title>
+  <title>site-map</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    body{font-family: Arial, sans-serif; padding:20px; background:#fff; color:#111;}
-    .sitemapItem{margin:10px 0;padding:8px;border:1px solid #eee;border-radius:6px}
+    /* 最小可见样式（可放进主题 css） */
+    body{font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft Yahei", Arial, sans-serif; color:#222; background:#fff; padding:20px;}
+    .siteMapWrapper{max-width:1100px;margin:0 auto;}
+    .family{margin-bottom:28px;}
+    .family h2{margin:8px 0 12px;font-size:20px;color:#111;}
+    .items{display:flex;flex-wrap:wrap;gap:12px}
+    .item{width: calc(33.333% - 12px); min-width:220px; background:#fafafa;border:1px solid #eee;border-radius:8px;padding:12px;box-sizing:border-box;display:flex;gap:10px;align-items:flex-start}
+    .item .avatar{width:64px;height:64px;flex:0 0 64px;border-radius:6px;overflow:hidden;background:#fff;border:1px solid #ddd;display:flex;align-items:center;justify-content:center}
+    .item .avatar img{width:100%;height:100%;object-fit:contain}
+    .item .meta{flex:1}
+    .item .meta .name{font-weight:600;margin-bottom:6px}
+    .item .meta .intro{font-size:13px;color:#666;margin-bottom:6px}
+    .item .meta a{font-size:12px;color:#1a73e8;word-break:break-all}
+    /* 响应式 */
+    @media (max-width:900px){ .item{width: calc(50% - 12px);} }
+    @media (max-width:520px){ .item{width:100%} .items{gap:8px} }
   </style>
 </head>
 <body>
-  <h1>站点导航（测试）</h1>
-  <p>如果你能看到这段文字，说明 layout 已经加载并工作。</p>
+  <div class="siteMapWrapper">
+    <h1>site-map</h1>
+    <p></p>
 
-  
-    <div>未找到 theme.vvd_local_links 或者其 families 数据为空（这不是致命错误，只是数据未配置）。</div>
-  
+    
+      <div>未检测到 theme.vvd_local_links 配置或 families 数据为空。请检查 themes/fluid/_config.yml 中的 vvd_local_links 定义。</div>
+    
+  </div>
+
+  <script>
+    (function(){
+      // 1) 防止模板中错误导致整个页面不可见：所有客户端工作放到 try/catch
+      try {
+        // 基本防御：若页面没有 screenshot 前缀配置，则跳过截图加载步骤
+        var screenshotPrefix = (typeof theme !== 'undefined' && theme && theme.vvd_local_links && theme.vvd_local_links.screecshot_prefix) ? theme.vvd_local_links.screecshot_prefix : null;
+        var lostPage = (typeof theme !== 'undefined' && theme && theme.vvd_local_links && theme.vvd_local_links.lost_page) ? theme.vvd_local_links.lost_page : null;
+
+        // 2) 延迟并异步加载截图（非阻塞）：先不依赖 md5 或 jQuery，使用 encodeURIComponent 作为文件标识（如果你的截图服务需要 md5，你可以替换此处逻辑）
+        if (screenshotPrefix) {
+          // 逐个设置 data-src，不发请求直到图片进入视口（懒加载）
+          var items = document.querySelectorAll('.item');
+          items.forEach(function(node){
+            try {
+              var link = node.getAttribute('data-link') || '';
+              if (!link) return;
+              // 示例：构造截图 URL（你需要根据你的截图服务调整）
+              // 推荐截图服务可以支持通过 ?url=xxx 返回截图。
+              // 例如： https://your-screenshot-service.example/screenshot?url=<encoded url>
+              var encoded = encodeURIComponent(link);
+              var imgUrl = screenshotPrefix.replace(/\/$/, '') + '/?url=' + encoded;
+              var imgEl = node.querySelector('.screenshot img');
+              if (imgEl) {
+                imgEl.setAttribute('data-src', imgUrl);
+                // 懒加载：当图片进入视口时将 data-src -> src
+              }
+            } catch(e){ console && console.warn('sitemap item build err', e); }
+          });
+
+          // 简单 IntersectionObserver 懒加载（若不支持则立即加载）
+          function loadImg(el){
+            if (!el) return;
+            var src = el.getAttribute('data-src');
+            if (!src) return;
+            el.onload = function(){ el.style.display = 'block'; }
+            el.onerror = function(){ 
+              if (lostPage) el.src = lostPage;
+              el.style.display = 'block';
+            }
+            el.src = src;
+          }
+
+          if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function(entries){
+              entries.forEach(function(ent){
+                if (ent.isIntersecting) {
+                  var img = ent.target;
+                  loadImg(img);
+                  io.unobserve(img);
+                }
+              });
+            }, {rootMargin:'200px'});
+            document.querySelectorAll('.screenshot img[data-src]').forEach(function(i){ io.observe(i); });
+          } else {
+            // 退化：直接加载
+            document.querySelectorAll('.screenshot img[data-src]').forEach(loadImg);
+          }
+        }
+      } catch (err) {
+        // 任何错误都不会阻塞页面（已捕获）
+        console && console.error('site-map script error:', err);
+      }
+    })();
+  </script>
 </body>
 </html>
 
