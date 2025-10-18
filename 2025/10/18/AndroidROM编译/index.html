@@ -29,7 +29,7 @@
 <meta property="og:description" content="面向新手的类原生编译教程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-18T03:12:29.000Z">
-<meta property="article:modified_time" content="2025-10-18T06:52:05.788Z">
+<meta property="article:modified_time" content="2025-10-18T06:53:48.075Z">
 <meta property="article:author" content="㪾夜">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary_large_image">
@@ -331,6 +331,14 @@
                     <span>站点分析</span>
                   </a>
                 
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/sitemap.xml" target="_self">
+                    <i class="iconfont icon-zhandianditu"></i>
+                    <span>站点地图</span>
+                  </a>
+                
               </div>
             </li>
           
@@ -518,7 +526,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-10-18T14:52:05+08:00
+                    本文最后更新于 2025-10-18T14:53:48+08:00
                   
                   
 
@@ -580,10 +588,7 @@
 
 <p>然后，运行source ~&#x2F;.profile以更新您的环境。</p>
 <h3 id="配置-git"><a href="#配置-git" class="headerlink" title="配置 git"></a>配置 git</h3><p>鉴于repo需要您识别自己才能同步 Android，请运行以下命令来配置您的git身份</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.email <span class="hljs-string">&quot;you@example.com&quot;</span>  <br>git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span><br>```  <br><br>由于规模较大，某些仓库配置为lfs或Large File Storage。为确保您的发行版已为此做好准备，请运行:<br><br>```bash<br>git lfs install<br></code></pre></td></tr></table></figure>
-
-<p>为了避免Change-Id:提交消息中出现重复的尾部，尤其是在挑选更改时，请Change-Id:向 git 制作一个已知的尾部：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global trailer.changeid.key <span class="hljs-string">&quot;Change-Id&quot;</span>  <br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.email <span class="hljs-string">&quot;you@example.com&quot;</span>  <br>git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span><br>```  <br><br>由于规模较大，某些仓库配置为lfs或Large File Storage。为确保您的发行版已为此做好准备，请运行:<br><br>```bash<br>git lfs install<br>```  <br><br>为了避免Change-Id:提交消息中出现重复的尾部，尤其是在挑选更改时，请Change-Id:向 git 制作一个已知的尾部：<br><br>```bash<br>git config --global trailer.changeid.key <span class="hljs-string">&quot;Change-Id&quot;</span>  <br></code></pre></td></tr></table></figure>
 
 <h3 id="开启缓存以加速构建"><a href="#开启缓存以加速构建" class="headerlink" title="开启缓存以加速构建"></a>开启缓存以加速构建</h3><p>ccache如果您想通过运行以下命令来加速后续构建：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> USE_CCACHE=1<br><span class="hljs-built_in">export</span> CCACHE_EXEC=/usr/bin/ccache<br></code></pre></td></tr></table></figure>
