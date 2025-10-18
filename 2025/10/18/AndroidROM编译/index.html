@@ -29,7 +29,7 @@
 <meta property="og:description" content="面向新手的类原生编译教程">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-10-18T03:12:29.000Z">
-<meta property="article:modified_time" content="2025-10-18T06:03:34.806Z">
+<meta property="article:modified_time" content="2025-10-18T06:09:12.051Z">
 <meta property="article:author" content="㪾夜">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary_large_image">
@@ -87,7 +87,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yblog.15937.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"PKVTm7bgraHZt8gWRK3luPWW-MdYXbMMI","app_key":"DS5NTeOu1mfjLMZYQHus6EiT","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":"https://umami.15937.top/script.js","website_id":"177191a0-4c4a-404d-83ee-139d926214b3","domains":"yblog.15937.top, zblog.15937.top","start_time":"2025-10-10T00:00:00.000Z","token":"xguJq8OOWUTgd1o1gqr2Vrc2UFQSUGV/40WwIyec41/zwoQajM6fmNuesV95jiLIR+/KMWeUkhP3OVYnSwNJwU8I1G1NtqhTG/c/j30RMEzvVB1e+3SR2DMbnBXUnKz+SWN2LBOpPJ394bXvOKUL9OKmrz8NQJlkYlYBRjj1x/GA249Yv2fperNocajWGBaqIbdnqELae83ds97+Y8rMVgFnyJAMFdArmPF77qPmkjpnq5EZawcOh6pLqUvWSLF6oaqAMF8EtHg+ErvC8ilf1VcOb6itOs8UBfwclAniRv+SJUVfhWPZGQyoOg+MpvcfZfgo+X4chTqK5kIzEH5ZcRNkRyPk4iYJMiO/YBqKiWXUdARlgwkeFp6UwMzg","api_server":"https://umami.15937.top"}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"yblog.15937.top","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"bash"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":"PKVTm7bgraHZt8gWRK3luPWW-MdYXbMMI","app_key":"DS5NTeOu1mfjLMZYQHus6EiT","server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":"https://umami.15937.top/script.js","website_id":"177191a0-4c4a-404d-83ee-139d926214b3","domains":"yblog.15937.top, zblog.15937.top","start_time":"2025-10-10T00:00:00.000Z","token":"xguJq8OOWUTgd1o1gqr2Vrc2UFQSUGV/40WwIyec41/zwoQajM6fmNuesV95jiLIR+/KMWeUkhP3OVYnSwNJwU8I1G1NtqhTG/c/j30RMEzvVB1e+3SR2DMbnBXUnKz+SWN2LBOpPJ394bXvOKUL9OKmrz8NQJlkYlYBRjj1x/GA249Yv2fperNocajWGBaqIbdnqELae83ds97+Y8rMVgFnyJAMFdArmPF77qPmkjpnq5EZawcOh6pLqUvWSLF6oaqAMF8EtHg+ErvC8ilf1VcOb6itOs8UBfwclAniRv+SJUVfhWPZGQyoOg+MpvcfZfgo+X4chTqK5kIzEH5ZcRNkRyPk4iYJMiO/YBqKiWXUdARlgwkeFp6UwMzg","api_server":"https://umami.15937.top"}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -518,7 +518,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-10-18T14:03:34+08:00
+                    本文最后更新于 2025-10-18T14:09:12+08:00
                   
                   
 
@@ -540,7 +540,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># add Android SDK platform tools to path</span><br><span class="hljs-keyword">if</span> [ -d <span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/platform-tools&quot;</span> ] ; <span class="hljs-keyword">then</span><br>    PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/platform-tools:<span class="hljs-variable">$PATH</span>&quot;</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 
 <p>然后，运行source ~&#x2F;.profile以更新您的环境。</p>
-<h2 id="安装构建包"><a href="#安装构建包" class="headerlink" title="安装构建包"></a>安装构建包</h2><p>构建 LineageOS 需要几个软件包。您可以使用发行版的软件包管理器来安装它们。</p>
+<h3 id="安装构建包"><a href="#安装构建包" class="headerlink" title="安装构建包"></a>安装构建包</h3><p>构建 LineageOS 需要几个软件包。您可以使用发行版的软件包管理器来安装它们。</p>
 <p><strong>提示： Linux 中的软件包管理器是一个用于在计算机上安装或删除软件（通常来自互联网）的系统。在 Ubuntu 系统中，您可以使用 Ubuntu 软件中心。更棒的是，您还可以apt install 直接在终端中使用该命令。</strong><br>要构建 LineageOS，您需要：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick protobuf-compiler python3-protobuf lib32readline-dev lib32z1-dev libdw-dev libelf-dev lz4 libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev<br></code></pre></td></tr></table></figure>
 
@@ -553,7 +553,7 @@
 <p>此外，对于早于 20.04（focal）的 Ubuntu 版本，还需要安装：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">libwxgtk3.0-dev<br></code></pre></td></tr></table></figure>
 
-<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><p>不同版本的 LineageOS 需要不同的 JDK（Java 开发工具包）版本。</p>
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h4><p>不同版本的 LineageOS 需要不同的 JDK（Java 开发工具包）版本。</p>
 <ul>
 <li>LineageOS 18.1+：OpenJDK 11（包含在源下载中）  </li>
 <li>LineageOS 16.0-17.1：OpenJDK 1.9（包含在源下载中）  </li>
@@ -561,7 +561,7 @@
 <li>LineageOS 11.0-13.0：OpenJDK 1.7（安装openjdk-7-jdk）</li>
 </ul>
 <p><strong>Ubuntu 16.04 及更新版本在标准软件包仓库中没有 OpenJDK 1.7。请参阅Ask Ubuntu问题“如何在 Ubuntu 16.04 或更高版本上安装 openjdk 7？ ”。请注意，使用 PPA openjdk-r 的建议已过时（PPA 从未更新其提供的 openjdk-7-jdk，因此缺少安全修复）；即使该答案获得最多赞，也请跳过。</strong></p>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>不同版本的 LineageOS 需要不同的默认 Python 版本。</p>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p>不同版本的 LineageOS 需要不同的默认 Python 版本。</p>
 <ul>
 <li>LineageOS 17.1+：Python 3（安装python-is-python3）  </li>
 <li>LineageOS 11.0-16.0：Python 2（安装python-is-python2）</li>
@@ -580,7 +580,13 @@
 
 <p>然后，运行source ~&#x2F;.profile以更新您的环境。</p>
 <h3 id="配置-git"><a href="#配置-git" class="headerlink" title="配置 git"></a>配置 git</h3><p>鉴于repo需要您识别自己才能同步 Android，请运行以下命令来配置您的git身份：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.email <span class="hljs-string">&quot;you@example.com&quot;</span>  <br>git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span><br>```  <br><br>由于规模较大，某些仓库配置为lfs或Large File Storage。为确保您的发行版已为此做好准备，请运行：<br><br>`git lfs install`<br><br>为了避免Change-Id:提交消息中出现重复的尾部，尤其是在挑选更改时，请Change-Id:向 git 制作一个已知的尾部：<br><br>`git config --global trailer.changeid.key <span class="hljs-string">&quot;Change-Id&quot;</span>`  <br><br><span class="hljs-comment">### 开启缓存以加速构建</span><br><br>ccache如果您想通过运行以下命令来加速后续构建：<br><br>```bash<br><span class="hljs-built_in">export</span> USE_CCACHE=1<br><span class="hljs-built_in">export</span> CCACHE_EXEC=/usr/bin/ccache<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.email <span class="hljs-string">&quot;you@example.com&quot;</span>  <br>git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span><br>```  <br><br>由于规模较大，某些仓库配置为lfs或Large File Storage。为确保您的发行版已为此做好准备，请运行：<br><br>```bash<br>git lfs install<br></code></pre></td></tr></table></figure>
+
+<p>为了避免Change-Id:提交消息中出现重复的尾部，尤其是在挑选更改时，请Change-Id:向 git 制作一个已知的尾部：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global trailer.changeid.key <span class="hljs-string">&quot;Change-Id&quot;</span>  <br></code></pre></td></tr></table></figure>
+
+<h3 id="开启缓存以加速构建"><a href="#开启缓存以加速构建" class="headerlink" title="开启缓存以加速构建"></a>开启缓存以加速构建</h3><p>ccache如果您想通过运行以下命令来加速后续构建：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> USE_CCACHE=1<br><span class="hljs-built_in">export</span> CCACHE_EXEC=/usr/bin/ccache<br></code></pre></td></tr></table></figure>
 
 <p>并将该行添加到文件中。然后，输入以下命令~&#x2F;.bashrc指定要使用的最大磁盘空间量：ccache</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ccache -M 50G<br></code></pre></td></tr></table></figure>
