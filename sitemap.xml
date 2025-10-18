@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yblog.15937.top/site-map/index.html</loc>
+    
+    <lastmod>2025-10-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yblog.15937.top/2025/10/18/AndroidROM%E7%BC%96%E8%AF%91/</loc>
     
     <lastmod>2025-10-18</lastmod>
@@ -48,15 +57,6 @@
   
   <url>
     <loc>https://yblog.15937.top/css/iconfont-zhandian/iconfont.json</loc>
-    
-    <lastmod>2025-10-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://yblog.15937.top/site-map/index.html</loc>
     
     <lastmod>2025-10-16</lastmod>
     
@@ -164,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://yblog.15937.top/js/APlayer/docs/README.html</loc>
+    <loc>https://yblog.15937.top/js/APlayer/docs/ecosystem.html</loc>
     
     <lastmod>2025-10-15</lastmod>
     
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://yblog.15937.top/js/APlayer/docs/ecosystem.html</loc>
+    <loc>https://yblog.15937.top/js/APlayer/docs/README.html</loc>
     
     <lastmod>2025-10-15</lastmod>
     
