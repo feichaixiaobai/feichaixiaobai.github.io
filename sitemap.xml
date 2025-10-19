@@ -164,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://yblog.15937.top/js/APlayer/docs/ecosystem.html</loc>
+    <loc>https://yblog.15937.top/js/APlayer/docs/README.html</loc>
     
     <lastmod>2025-10-15</lastmod>
     
@@ -173,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://yblog.15937.top/js/APlayer/docs/README.html</loc>
+    <loc>https://yblog.15937.top/js/APlayer/docs/ecosystem.html</loc>
     
     <lastmod>2025-10-15</lastmod>
     
@@ -364,7 +364,7 @@
 
   <url>
     <loc>https://yblog.15937.top/</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -372,14 +372,14 @@
   
   <url>
     <loc>https://yblog.15937.top/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://yblog.15937.top/tags/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -388,7 +388,7 @@
   
   <url>
     <loc>https://yblog.15937.top/categories/Android/</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
