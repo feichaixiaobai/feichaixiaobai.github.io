@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://yblog.15937.top/google63c201d813edec42.html</loc>
-    
-    <lastmod>2025-10-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yblog.15937.top/map/index.html</loc>
     
     <lastmod>2025-10-19</lastmod>
@@ -173,15 +164,6 @@
   </url>
   
   <url>
-    <loc>https://yblog.15937.top/js/APlayer/docs/zh-Hans/README.html</loc>
-    
-    <lastmod>2025-10-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://yblog.15937.top/js/APlayer/docs/zh-Hans/ecosystem.html</loc>
     
     <lastmod>2025-10-15</lastmod>
@@ -191,7 +173,7 @@
   </url>
   
   <url>
-    <loc>https://yblog.15937.top/js/APlayer/docs/README.html</loc>
+    <loc>https://yblog.15937.top/js/APlayer/docs/zh-Hans/README.html</loc>
     
     <lastmod>2025-10-15</lastmod>
     
@@ -210,6 +192,15 @@
   
   <url>
     <loc>https://yblog.15937.top/js/APlayer/docs/index.html</loc>
+    
+    <lastmod>2025-10-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://yblog.15937.top/js/APlayer/docs/README.html</loc>
     
     <lastmod>2025-10-15</lastmod>
     
