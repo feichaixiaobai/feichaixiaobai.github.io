@@ -28,11 +28,13 @@
 <meta property="og:site_name" content="㪾夜">
 <meta property="og:description" content="了解GFW历史">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.arstechnica.net/wp-content/uploads/2015/04/great-cannon.png">
 <meta property="article:published_time" content="2025-10-20T08:59:24.000Z">
-<meta property="article:modified_time" content="2025-10-20T08:59:45.121Z">
+<meta property="article:modified_time" content="2025-10-20T09:01:32.943Z">
 <meta property="article:author" content="㪾夜">
 <meta property="article:tag" content="GFW">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.arstechnica.net/wp-content/uploads/2015/04/great-cannon.png">
   
   
   
@@ -408,7 +410,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.6k 字
         
       </span>
     
@@ -419,7 +421,7 @@
         
         
         
-          1 分钟
+          14 分钟
         
       </span>
     
@@ -534,7 +536,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2025-10-20T16:59:45+08:00
+                    本文最后更新于 2025-10-20T17:01:32+08:00
                   
                   
 
@@ -544,7 +546,151 @@
             
               <div class="markdown-body">
                 
-                
+                <h1 id="🧱-防火长城（GFW）的由来与演变"><a href="#🧱-防火长城（GFW）的由来与演变" class="headerlink" title="🧱 防火长城（GFW）的由来与演变"></a>🧱 防火长城（GFW）的由来与演变</h1><blockquote>
+<p>“防火长城”（Great Firewall of China，简称 <strong>GFW</strong>）是世界上规模最大、最复杂的互联网过滤与监控系统之一。<br>它不仅是一套技术体系，更是一项政策与网络主权战略。<br>本文将从 <strong>起源、发展、技术机制、影响与争议</strong> 等方面系统解析 GFW 的形成过程。</p>
+</blockquote>
+<hr>
+<h2 id="🌏-一、何谓防火长城（GFW）"><a href="#🌏-一、何谓防火长城（GFW）" class="headerlink" title="🌏 一、何谓防火长城（GFW）"></a>🌏 一、何谓防火长城（GFW）</h2><p>“防火长城”（Great Firewall）是对中国大陆网络出入境过滤系统的俗称。<br>它的核心目标是：<strong>控制国际互联网内容的访问、过滤敏感信息，并保障国家网络主权</strong>。</p>
+<p>📖 官方并无 “GFW” 一词，它是国外研究者与技术社群对该系统的非正式称呼。</p>
+<hr>
+<h2 id="🕰-二、历史起源与发展阶段"><a href="#🕰-二、历史起源与发展阶段" class="headerlink" title="🕰 二、历史起源与发展阶段"></a>🕰 二、历史起源与发展阶段</h2><h3 id="1️⃣-初期探索（1990s）"><a href="#1️⃣-初期探索（1990s）" class="headerlink" title="1️⃣ 初期探索（1990s）"></a>1️⃣ 初期探索（1990s）</h3><ul>
+<li>1994 年：中国正式接入国际互联网。  </li>
+<li>1996 年：《计算机信息网络国际联网管理暂行规定》出台，确立“统一出入口”的监管模式。  </li>
+<li>这一时期，国家意识到需要控制跨境信息流通，防止“有害信息”传播。</li>
+</ul>
+<h3 id="2️⃣-系统建设（2000s）"><a href="#2️⃣-系统建设（2000s）" class="headerlink" title="2️⃣ 系统建设（2000s）"></a>2️⃣ 系统建设（2000s）</h3><ul>
+<li>2000 年前后，GFW 的雏形建立。  </li>
+<li>主要封锁手段包括：<ul>
+<li><strong>IP 封锁</strong>（直接屏蔽服务器地址）  </li>
+<li><strong>DNS 污染</strong>（篡改域名解析）  </li>
+<li><strong>关键词过滤</strong>（基于内容匹配）</li>
+</ul>
+</li>
+<li>2009 年起，Google、Facebook、YouTube 等主流国外网站陆续被封锁。</li>
+</ul>
+<h3 id="3️⃣-技术升级（2010s-至今）"><a href="#3️⃣-技术升级（2010s-至今）" class="headerlink" title="3️⃣ 技术升级（2010s 至今）"></a>3️⃣ 技术升级（2010s 至今）</h3><ul>
+<li>随着 HTTPS 普及、流量加密普遍化，GFW 开始使用 <strong>深度包检测（DPI）</strong> 技术。  </li>
+<li>对流量特征、TLS 握手、SNI 信息进行分析与阻断。  </li>
+<li>同时发展出更复杂的检测与“主动探测”机制，可识别 VPN、代理工具、Tor、Shadowsocks 等。</li>
+</ul>
+<hr>
+<h2 id="⚙️-三、GFW-的技术机制"><a href="#⚙️-三、GFW-的技术机制" class="headerlink" title="⚙️ 三、GFW 的技术机制"></a>⚙️ 三、GFW 的技术机制</h2><table>
+<thead>
+<tr>
+<th align="left">技术手段</th>
+<th align="left">原理说明</th>
+<th align="left">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>IP 封锁</strong></td>
+<td align="left">阻断访问目标 IP 地址的所有流量</td>
+<td align="left">无法连接被封网站</td>
+</tr>
+<tr>
+<td align="left"><strong>DNS 污染</strong></td>
+<td align="left">返回错误或假 IP 地址</td>
+<td align="left"><code>google.com</code> 解析错误</td>
+</tr>
+<tr>
+<td align="left"><strong>HTTP 关键字过滤</strong></td>
+<td align="left">检查明文 HTTP 请求中的关键词</td>
+<td align="left">涉及政治敏感词即被断开</td>
+</tr>
+<tr>
+<td align="left"><strong>深度包检测（DPI）</strong></td>
+<td align="left">分析加密流量的特征</td>
+<td align="left">检测 VPN 协议、TLS 握手模式</td>
+</tr>
+<tr>
+<td align="left"><strong>主动探测</strong></td>
+<td align="left">主动扫描疑似代理节点以验证用途</td>
+<td align="left">机场&#x2F;V2Ray 节点被封</td>
+</tr>
+<tr>
+<td align="left"><strong>连接重置（RST）</strong></td>
+<td align="left">当检测到违规请求时主动断开连接</td>
+<td align="left">浏览器提示连接被重置</td>
+</tr>
+</tbody></table>
+<p>📌 这些机制通常由国家骨干网出口处的设备完成，例如部署在中国电信、中国联通、中国移动等国际出口节点。</p>
+<hr>
+<h2 id="🧩-四、GFW-的组成架构"><a href="#🧩-四、GFW-的组成架构" class="headerlink" title="🧩 四、GFW 的组成架构"></a>🧩 四、GFW 的组成架构</h2><p>防火长城不是单一设备，而是由多个层面组成的综合体系：</p>
+<ol>
+<li><p><strong>法律与政策层</strong>  </p>
+<ul>
+<li>1996 年的联网管理规定  </li>
+<li>《网络安全法》（2017）  </li>
+<li>《数据安全法》《个人信息保护法》等<br>这些为网络审查提供法律依据。</li>
+</ul>
+</li>
+<li><p><strong>技术层</strong>  </p>
+<ul>
+<li>各类封锁设备、DNS 服务器、过滤系统  </li>
+<li>部署于国家出口路由器、骨干交换机处</li>
+</ul>
+</li>
+<li><p><strong>运营与管理层</strong>  </p>
+<ul>
+<li>三大运营商承担流量监控与过滤任务  </li>
+<li>多部门（如网信办、工信部）协同监管</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="🧭-五、目的与战略意义"><a href="#🧭-五、目的与战略意义" class="headerlink" title="🧭 五、目的与战略意义"></a>🧭 五、目的与战略意义</h2><table>
+<thead>
+<tr>
+<th align="left">目标类型</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>国家安全</strong></td>
+<td align="left">防止境外势力通过互联网影响国内舆论</td>
+</tr>
+<tr>
+<td align="left"><strong>社会稳定</strong></td>
+<td align="left">阻断谣言与政治敏感内容传播</td>
+</tr>
+<tr>
+<td align="left"><strong>经济保护</strong></td>
+<td align="left">为本土互联网企业（如百度、腾讯）提供竞争空间</td>
+</tr>
+<tr>
+<td align="left"><strong>网络主权</strong></td>
+<td align="left">强调“互联网是主权空间的一部分”理念</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🌐-六、影响与全球反响"><a href="#🌐-六、影响与全球反响" class="headerlink" title="🌐 六、影响与全球反响"></a>🌐 六、影响与全球反响</h2><h3 id="正面作用"><a href="#正面作用" class="headerlink" title="正面作用"></a>正面作用</h3><ul>
+<li>促进了中国本土互联网生态的形成（百度、腾讯、阿里巴巴等得以发展）。</li>
+<li>加强了国家对数据与网络安全的掌控。</li>
+</ul>
+<h3 id="负面影响"><a href="#负面影响" class="headerlink" title="负面影响"></a>负面影响</h3><ul>
+<li>普通用户难以访问国际主流网站与学术资源。  </li>
+<li>对跨国公司、研究人员、开发者造成沟通障碍。  </li>
+<li>促使“科学上网”与“翻墙”技术兴起，形成“封与反封”的博弈。</li>
+</ul>
+<hr>
+<h2 id="⚔️-七、GFW-与“Great-Cannon”的关系"><a href="#⚔️-七、GFW-与“Great-Cannon”的关系" class="headerlink" title="⚔️ 七、GFW 与“Great Cannon”的关系"></a>⚔️ 七、GFW 与“Great Cannon”的关系</h2><p>2015 年，国外研究者发现中国互联网中存在名为 <strong>Great Cannon（大炮）</strong> 的系统。<br>它可劫持 HTTP 流量，将普通用户浏览请求改造成攻击流量，用于大规模 DDoS 攻击。<br>研究认为该系统与 GFW 紧密协作，但职能不同：  </p>
+<ul>
+<li><strong>GFW</strong>：负责屏蔽与过滤  </li>
+<li><strong>Great Cannon</strong>：负责注入与攻击</li>
+</ul>
+<p><img src="https://cdn.arstechnica.net/wp-content/uploads/2015/04/great-cannon.png" srcset="/img/loading.gif" lazyload alt="GFW 与 Great Cannon 示意图"></p>
+<hr>
+<h2 id="⚖️-八、争议与展望"><a href="#⚖️-八、争议与展望" class="headerlink" title="⚖️ 八、争议与展望"></a>⚖️ 八、争议与展望</h2><h3 id="争议焦点"><a href="#争议焦点" class="headerlink" title="争议焦点"></a>争议焦点</h3><ul>
+<li>是否限制公民的信息自由？  </li>
+<li>如何在信息安全与言论自由之间取得平衡？  </li>
+<li>对外资互联网服务的进入壁垒是否合理？</li>
+</ul>
+<h3 id="未来趋势"><a href="#未来趋势" class="headerlink" title="未来趋势"></a>未来趋势</h3><ul>
+<li>审查技术趋向 AI 化、自动化。  </li>
+<li>增强 HTTPS&#x2F;TLS 指纹分析能力。  </li>
+<li>政策层面或将继续强化“数字</li>
+</ul>
+
                 
               </div>
             
