@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yblog.15937.top/2025/11/01/%E8%A7%A3%E5%8C%85Android-ROM/</loc>
+    
+    <lastmod>2025-11-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://yblog.15937.top/resource/index.html</loc>
     
     <lastmod>2025-10-23</lastmod>
@@ -427,7 +436,7 @@
 
   <url>
     <loc>https://yblog.15937.top/</loc>
-    <lastmod>2025-10-23</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -435,21 +444,21 @@
   
   <url>
     <loc>https://yblog.15937.top/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2025-10-23</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://yblog.15937.top/tags/GFW/</loc>
-    <lastmod>2025-10-23</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://yblog.15937.top/tags/%E6%B5%8B%E8%AF%95/</loc>
-    <lastmod>2025-10-23</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -458,14 +467,14 @@
   
   <url>
     <loc>https://yblog.15937.top/categories/Android/</loc>
-    <lastmod>2025-10-23</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://yblog.15937.top/categories/GFW/</loc>
-    <lastmod>2025-10-23</lastmod>
+    <lastmod>2025-11-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
