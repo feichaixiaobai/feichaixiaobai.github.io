@@ -129,56 +129,6 @@
   
   
   <entry>
-    <title>机场与VPN</title>
-    <link href="/2025/10/20/%E6%9C%BA%E5%9C%BA%E4%B8%8Evpn/"/>
-    <url>/2025/10/20/%E6%9C%BA%E5%9C%BA%E4%B8%8Evpn/</url>
-    
-    <content type="html"><![CDATA[<h1 id="🚀-机场与-VPN-的全面区别：速度-vs-安全，哪种更适合你？"><a href="#🚀-机场与-VPN-的全面区别：速度-vs-安全，哪种更适合你？" class="headerlink" title="🚀 机场与 VPN 的全面区别：速度 vs 安全，哪种更适合你？"></a>🚀 机场与 VPN 的全面区别：速度 vs 安全，哪种更适合你？</h1><blockquote><p>想访问被限制的网站、使用海外 AI 工具（如 ChatGPT、Claude、Midjourney），你可能听说过“<strong>机场</strong>”或“<strong>VPN</strong>”。<br>它们看似功能相似，其实原理、使用体验、安全性都完全不同。本文将带你全面了解机场与 VPN 的区别，帮你选对工具。</p></blockquote><hr><h2 id="🧭-一、什么是“机场”？"><a href="#🧭-一、什么是“机场”？" class="headerlink" title="🧭 一、什么是“机场”？"></a>🧭 一、什么是“机场”？</h2><p>“机场”并不是指真的机场 ✈️，而是<strong>代理节点服务提供商</strong>的俗称。<br>它基于 <strong>Shadowsocks (SS)</strong>、<strong>V2Ray (VMess&#x2F;VLess)</strong>、<strong>Trojan</strong> 等协议，通过中转服务器，让你绕过网络限制。</p><p>📌 <strong>特点总结：</strong></p><ul><li>使用代理技术（而非系统级 VPN）</li><li>用户通过“订阅链接”导入 Clash、Shadowrocket 等客户端</li><li>可自由切换不同国家&#x2F;地区的节点</li></ul><blockquote><p>✅ 机场 &#x3D; 一组高速代理节点，让你轻松访问全球网络。</p></blockquote><hr><h2 id="🔒-二、什么是-VPN？"><a href="#🔒-二、什么是-VPN？" class="headerlink" title="🔒 二、什么是 VPN？"></a>🔒 二、什么是 VPN？</h2><p>VPN，全称 <strong>Virtual Private Network（虚拟专用网络）</strong>。<br>它通过建立<strong>加密隧道</strong>，把你的设备流量加密后发送到 VPN 服务器，从而隐藏真实 IP 与访问行为。</p><p>📌 <strong>特点总结：</strong></p><ul><li>加密整个网络连接（系统级）</li><li>常用于公司远程办公、数据加密、隐私保护</li><li>协议包括 OpenVPN、WireGuard、IKEv2 等</li></ul><blockquote><p>✅ VPN &#x3D; 一个安全加密的“虚拟通道”，保护你的隐私。</p></blockquote><hr><h2 id="⚙️-三、技术原理对比"><a href="#⚙️-三、技术原理对比" class="headerlink" title="⚙️ 三、技术原理对比"></a>⚙️ 三、技术原理对比</h2><table><thead><tr><th align="left">对比项</th><th align="left">机场</th><th align="left">VPN</th></tr></thead><tbody><tr><td align="left"><strong>核心协议</strong></td><td align="left">SS &#x2F; SSR &#x2F; V2Ray &#x2F; Trojan</td><td align="left">OpenVPN &#x2F; WireGuard &#x2F; IKEv2</td></tr><tr><td align="left"><strong>加密层级</strong></td><td align="left">应用层</td><td align="left">网络层</td></tr><tr><td align="left"><strong>加密强度</strong></td><td align="left">中等</td><td align="left">高</td></tr><tr><td align="left"><strong>流量分流</strong></td><td align="left">支持（可设置国内直连）</td><td align="left">不支持（全局加密）</td></tr><tr><td align="left"><strong>速度表现</strong></td><td align="left">较快（可选节点）</td><td align="left">稍慢（加密开销大）</td></tr><tr><td align="left"><strong>隐私保护</strong></td><td align="left">一般</td><td align="left">强</td></tr><tr><td align="left"><strong>是否易被封锁</strong></td><td align="left">较高</td><td align="left">中等</td></tr></tbody></table><hr><h2 id="💡-四、使用体验区别"><a href="#💡-四、使用体验区别" class="headerlink" title="💡 四、使用体验区别"></a>💡 四、使用体验区别</h2><h3 id="🚀-机场：灵活、快速、性价比高"><a href="#🚀-机场：灵活、快速、性价比高" class="headerlink" title="🚀 机场：灵活、快速、性价比高"></a>🚀 机场：灵活、快速、性价比高</h3><p>✅ 优点：</p><ul><li>节点多，可自由切换国家  </li><li>分流策略灵活（国内直连 + 国外代理）  </li><li>速度快，适合视频流媒体与 AI 工具</li></ul><p>⚠️ 缺点：</p><ul><li>依赖节点质量与机场维护  </li><li>无统一安全标准，风险由服务商决定</li></ul><hr><h3 id="🧱-VPN：安全、稳定、隐私强"><a href="#🧱-VPN：安全、稳定、隐私强" class="headerlink" title="🧱 VPN：安全、稳定、隐私强"></a>🧱 VPN：安全、稳定、隐私强</h3><p>✅ 优点：</p><ul><li>全流量加密，保护隐私  </li><li>企业、机构广泛使用  </li><li>上手简单（开启即连）</li></ul><p>⚠️ 缺点：</p><ul><li>无法分流，全部流量走 VPN  </li><li>速度略慢，部分被封禁</li></ul><hr><h2 id="🎯-五、适用场景推荐"><a href="#🎯-五、适用场景推荐" class="headerlink" title="🎯 五、适用场景推荐"></a>🎯 五、适用场景推荐</h2><table><thead><tr><th align="left">场景</th><th align="left">推荐</th></tr></thead><tbody><tr><td align="left">访问 Google、YouTube、X（Twitter）</td><td align="left">✅ 机场</td></tr><tr><td align="left">使用 ChatGPT &#x2F; Midjourney &#x2F; Gemini 等 AI 工具</td><td align="left">✅ 机场</td></tr><tr><td align="left">企业远程办公、公司内网访问</td><td align="left">✅ VPN</td></tr><tr><td align="left">注重隐私、安全通信</td><td align="left">✅ VPN</td></tr><tr><td align="left">想看 Netflix、Disney+ 等外区视频</td><td align="left">✅ 机场</td></tr><tr><td align="left">想加密所有设备流量</td><td align="left">✅ VPN</td></tr></tbody></table><hr><h2 id="🛡-六、安全性与合规性"><a href="#🛡-六、安全性与合规性" class="headerlink" title="🛡 六、安全性与合规性"></a>🛡 六、安全性与合规性</h2><table><thead><tr><th align="left">项目</th><th align="left">机场</th><th align="left">VPN</th></tr></thead><tbody><tr><td align="left">加密方式</td><td align="left">中等强度代理加密</td><td align="left">系统级隧道加密</td></tr><tr><td align="left">日志记录</td><td align="left">依服务商不同</td><td align="left">部分 VPN 有隐私政策</td></tr><tr><td align="left">合法性</td><td align="left">视地区而定（部分敏感）</td><td align="left">一般用于企业，较安全</td></tr><tr><td align="left">匿名性</td><td align="left">较低</td><td align="left">较高</td></tr></tbody></table><blockquote><p>⚠️ 建议仅在合规、合法范围内使用任何网络工具。<br>请勿用于违法或侵权行为。</p></blockquote><hr><h2 id="🧩-七、总结：怎么选？"><a href="#🧩-七、总结：怎么选？" class="headerlink" title="🧩 七、总结：怎么选？"></a>🧩 七、总结：怎么选？</h2><table><thead><tr><th align="left">需求</th><th align="left">推荐方案</th></tr></thead><tbody><tr><td align="left">想访问海外网站、AI 工具、视频平台</td><td align="left">机场（灵活高效）</td></tr><tr><td align="left">想保护隐私、安全传输</td><td align="left">VPN（安全可靠）</td></tr><tr><td align="left">想兼顾两者</td><td align="left">混合使用（VPN + 代理分流）</td></tr></tbody></table><hr><h2 id="✈️-八、结语"><a href="#✈️-八、结语" class="headerlink" title="✈️ 八、结语"></a>✈️ 八、结语</h2><p>“机场”代表<strong>自由与速度</strong>，适合追求体验与效率的个人用户；<br>“VPN”象征<strong>安全与隐私</strong>，适合注重保密与稳定的专业人士。  </p><p>无论你选择哪一种，<strong>关键在于理解原理、明确需求、合理使用</strong>。<br>希望这篇文章能帮你找到最适合自己的网络通道。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>GFW</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>GFW</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>针对CN的VPN挑选</title>
-    <link href="/2025/10/20/%E9%92%88%E5%AF%B9CN%E7%9A%84VPN%E6%8C%91%E9%80%89/"/>
-    <url>/2025/10/20/%E9%92%88%E5%AF%B9CN%E7%9A%84VPN%E6%8C%91%E9%80%89/</url>
-    
-    <content type="html"><![CDATA[<h1 id="免责说明"><a href="#免责说明" class="headerlink" title="免责说明"></a>免责说明</h1><p>本帖子没有收取任何大厂的广告费，全靠我自身体验产品而得出的结论<br>读者任何行为均与博主无关。请各位遵守当地法律法规<br><strong>本文章仅供参考</strong></p><h2 id="国际知名的VPN-部分"><a href="#国际知名的VPN-部分" class="headerlink" title="国际知名的VPN(部分)"></a>国际知名的VPN(部分)</h2><style>.link-row {  display: flex;  flex-direction: column; /* 改为上下排列 */  align-items: center; /* 居中对齐 */  gap: 15px; /* 每个区块之间的间距 */}figure {  text-align: center;  margin: 0;}figcaption {  font-size: 1.4em; /* 调整文字大小 */  font-weight: bold; /* 加粗 */  margin-top: 10px; /* 与图片间距 */  color: skyblue; /* 可选文字颜色 */}</style><div class="link-row">  <figure>    <a href="https://protonvpn.com/" target="_blank" rel="noopener">      <img src="https://api.microlink.io/?url=https://protonvpn.com/&screenshot=true&meta=false&embed=screenshot.url" alt="proton.com 预览">    </a>    <figcaption>Proton</figcaption>  </figure>  <figure>    <a href="https://surfshark.com/" target="_blank" rel="noopener">      <img src="https://api.microlink.io/?url=https://surfshark.com/&screenshot=true&meta=false&embed=screenshot.url" alt="surfshark.com 预览">    </a>    <figcaption>Surfshark</figcaption>  </figure>   <figure>    <a href="https://nordvpn.com/" target="_blank" rel="noopener">      <img src="https://api.microlink.io/?url=https://nordvpn.com/&screenshot=true&meta=false&embed=screenshot.url" alt="nordvpn.com 预览">    </a>    <figcaption>NordVpn</figcaption>  </figure>  <figure>    <a href="https://www.expressvpn.com/" target="_blank" rel="noopener">      <img src="https://api.microlink.io/?url=https://www.expressvpn.com/&screenshot=true&meta=false&embed=screenshot.url" alt="expressvpn.com 预览">    </a>    <figcaption>ExpressVpn</figcaption>  </figure></div><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>一句话就是，在CN，就老老实实用机场吧。<br>一部分机场起名为xxx vpn，实则本质是机场，机场和VPN不要混淆。</p><p>要是非得追去安全和隐私，用VPN，那可以接着往下看</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">**proton vpn：**  <br>优点：  <br>- 你购买后还要其他附加服务，如邮箱啥的  <br>- 位于隐私安全法律严格的国家，不是十四眼，九眼那样情报共享的国家  <br>- 0日志，不会记录用户活动<br>缺点： <br>- 速度较慢，隐私和速度总不能同时追求，当然，在CN，所有知名VPN速度也都差不多。<br></code></pre></td></tr></table></figure><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">**ExpressVpn：**  <br>优点：<br>- 速度稍微快点  <br>  <br>缺点：<br>- 价格较贵<br>- 功能较少<br></code></pre></td></tr></table></figure><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">**NordVPN：**<br>优点：<br>- 跟protonVPN差不多  <br>  <br>缺点：<br>- CN很难连接<br></code></pre></td></tr></table></figure><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">**SurfsharkVPN：**<br>优点：<br>- 具有虚拟定位的功能  <br>缺点：<br>- 受网络限制，在CN可连接的只有几个国家（注意：是仅仅显示，不是如同其他VPN一样有列表却连接不了）<br></code></pre></td></tr></table></figure><p><strong>⚠⚠⚠</strong><br><strong>谨慎使用，甚至尽量别用某连VPN，某灯VPN等等这种VPN，使用VPN要认准国际有名并且用户量极大甚至0日志的那种</strong></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在CN，日常使用的话能别用VPN就别用，因为速度真的慢，而且有时候还连接不上。<br>如果真的有需求，并且连接不上，我有一方案可以尝试：  </p><ul><li>nekobox 或者clash设置为仅代理，然后再打开对应VPN app，基本可以连接成功。</li><li>用VPN 官方给的openvpn或者WireGuard的证书或链接，去对应的app导入，可能会连接成功</li><li>如果手机root了，也可以用透明代理这个方案</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>GFW</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>GFW</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>AndroidROM编译</title>
     <link href="/2025/10/18/AndroidROM%E7%BC%96%E8%AF%91/"/>
     <url>/2025/10/18/AndroidROM%E7%BC%96%E8%AF%91/</url>
@@ -196,25 +146,6 @@
     <tags>
       
       <tag>教程</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>测试</title>
-    <link href="/2025/10/11/%E6%B5%8B%E8%AF%95/"/>
-    <url>/2025/10/11/%E6%B5%8B%E8%AF%95/</url>
-    
-    <content type="html"><![CDATA[<p>评论测试</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>测试</tag>
       
     </tags>
     
