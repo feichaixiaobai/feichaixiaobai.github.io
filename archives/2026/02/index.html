@@ -317,10 +317,6 @@
       </div>
           <div class="site-info">
             <div class="footer-row">
-              <span>© 2024 - 2026 LuoYe</span>
-            </div>
-      
-            <div class="footer-row">
               <span>
                 <span class="icon-user"></span>
                 总访客数 <span id="umami-uv">...</span> 人
@@ -330,68 +326,60 @@
                 <span class="icon-eye"></span>
                 总访问量 <span id="umami-pv">...</span> 次
               </span>
-              &nbsp;|&nbsp;
+            </div>
+          
+            <div class="footer-row">
               <span>
                 <span class="icon-signal"></span>
                 当前 <span id="umami-online" style="color: #27ae60; font-weight: bold;">-</span> 人在线
               </span>
             </div>
-      
-            <div style="font-size: 10px; color: #999; margin-top: 5px;">
-              Debug ID: <span id="debug-id">检查中...</span>
-            </div>
           </div>
-      
+          
           <script>
             async function fetchUmamiStats() {
-                const host = "https://umami.hanye.tech";
-                const shareId = "5UZ5ujuyW5WmzMGF";
+              const host = "https://umami.hanye.tech";
+              const shareId = "5UZ5ujuyW5WmzMGF";
 
-                try {
-                  const tokenRes = await fetch(`${host}/api/share/${shareId}`);
-                  if (!tokenRes.ok) throw new Error('Share ID 错误');
-                  const tokenData = await tokenRes.json();
-                  const authHeaders = { "x-umami-share-token": tokenData.token };
-                  const websiteId = tokenData.websiteId;
+              try {
+                const tokenRes = await fetch(`${host}/api/share/${shareId}`);
+                if (!tokenRes.ok) throw new Error('Share ID 错误');
+                const tokenData = await tokenRes.json();
+                const authHeaders = { "x-umami-share-token": tokenData.token };
+                const websiteId = tokenData.websiteId;
 
-                  document.getElementById('debug-id').innerText = websiteId;
+                const timeNow = Date.now();
 
-                  const timeNow = Date.now();
+                // UV/PV 统计
+                const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${timeNow}`, {
+                  headers: authHeaders
+                });
+                const statsData = await statsRes.json();
+                const uv = statsData.visitors?.value || statsData.visitors || 0;
+                const pv = statsData.pageviews?.value || statsData.pageviews || 0;
 
-                  // UV/PV 统计
-                  const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${timeNow}`, {
-                    headers: authHeaders
-                  });
-                  const statsData = await statsRes.json();
-                  const uv = statsData.visitors?.value || statsData.visitors || 0;
-                  const pv = statsData.pageviews?.value || statsData.pageviews || 0;
+                document.getElementById('umami-uv').innerText = uv;
+                document.getElementById('umami-pv').innerText = pv;
 
-                  document.getElementById('umami-uv').innerText = uv;
-                  document.getElementById('umami-pv').innerText = pv;
+                // 在线人数
+                const fiveMinutesAgo = timeNow - (5 * 60 * 1000);
+                const onlineRes = await fetch(
+                  `${host}/api/websites/${websiteId}/active?startAt=${fiveMinutesAgo}&endAt=${timeNow}&t=${timeNow}`,
+                  { headers: authHeaders }
+                );
+                const onlineData = await onlineRes.json();
 
-                  // 在线人数
-                  const fiveMinutesAgo = timeNow - (5 * 60 * 1000);
-                  const onlineRes = await fetch(
-                    `${host}/api/websites/${websiteId}/active?startAt=${fiveMinutesAgo}&endAt=${timeNow}&t=${timeNow}`,
-                    { headers: authHeaders }
-                  );
-                  const onlineData = await onlineRes.json();
+                const onlineCount = onlineData?.visitors || 0;
+                document.getElementById('umami-online').innerText = onlineCount;
 
-                  console.log("🔍 Active API Response:", onlineData);
-
-                  // 根据实际返回的数据结构解析
-                  const onlineCount = onlineData?.visitors || 0;
-
-                  document.getElementById('umami-online').innerText = onlineCount;
-
-                } catch (err) {
-                  console.error("❌ Umami 统计错误:", err);
-                  document.getElementById('umami-online').innerText = "Err";
-                }
+              } catch (err) {
+                console.error("❌ Umami 统计错误:", err);
+                document.getElementById('umami-online').innerText = "Err";
               }
+            }
 
-              fetchUmamiStats();
-              setInterval(fetchUmamiStats, 10000);
+            fetchUmamiStats();
+            setInterval(fetchUmamiStats, 10000);
           </script>
   </div>
 </footer>
