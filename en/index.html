@@ -348,26 +348,35 @@ Run server1$ hexo ser
 
         <script>
     async function fetchUmamiStats() {
-      const host = "https://umami.hanye.tech"; // 你的 Umami 反代地址
-      const websiteId = "e637cf1c-1c11-423e-82eb-b1707f691556"; // 你的 Website ID
-      
-      try {
-        // 获取总访问量 (从创建至今)
-        const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`);
-        const statsData = await statsRes.json();
-        document.getElementById('umami-pv').innerText = statsData.pageviews.value;
+  const host = "https://umami.hanye.tech"; 
+  const websiteId = "e637cf1c-1c11-423e-82eb-b1707f691556"; 
 
-        // 获取当前在线人数 (最近 5 分钟活跃访客)
-        const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active`);
-        const onlineData = await onlineRes.json();
-        document.getElementById('umami-online').innerText = onlineData[0].x;
-      } catch (err) {
-        console.error('Umami 统计加载失败', err);
-      }
+  try {
+    const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`);
+    
+    // 如果返回 401，说明权限有问题
+    if (statsRes.status === 401) {
+      console.error('Umami 权限不足，请确认已开启 Share URL');
+      document.getElementById('umami-pv').innerText = 'Auth Error';
+      return;
     }
-    // 初次加载并每隔 30 秒刷新一次在线人数
-    fetchUmamiStats();
-    setInterval(fetchUmamiStats, 30000);
+
+    const statsData = await statsRes.json();
+    // 增加安全读取判断
+    if (statsData && statsData.pageviews) {
+      document.getElementById('umami-pv').innerText = statsData.pageviews.value;
+    }
+
+    const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active`);
+    const onlineData = await onlineRes.json();
+    if (onlineData && onlineData.length > 0) {
+      document.getElementById('umami-online').innerText = onlineData[0].x;
+    }
+  } catch (err) {
+    console.error('Umami 请求异常', err);
+    document.getElementById('umami-pv').innerText = 'Error';
+  }
+}
   </script>
   </div>
 </footer>
