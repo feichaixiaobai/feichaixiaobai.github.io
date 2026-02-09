@@ -336,48 +336,62 @@
         </span>
       -->
         <span>
-          <span class="icon-eye"></span>
-            总访问量 <span id="umami-pv">加载中...</span> 次
-        </span>
-        &nbsp;|&nbsp;
-        <span>
-          <span class="icon-user"></span>
-            当前 <span id="umami-online" style="color: #27ae60; font-weight: bold;">0</span> 人在线
-        </span>
+      <span class="icon-eye"></span>
+      总访问量 <span id="umami-pv">加载中...</span> 次
+    </span>
+    &nbsp;|&nbsp;
+    <span>
+      <span class="icon-user"></span>
+      当前 <span id="umami-online" style="color: #27ae60; font-weight: bold;">0</span> 人在线
+    </span>
       </div>
 
         <script>
-    async function fetchUmamiStats() {
-      const host = "https://umami.hanye.tech"; 
-      const websiteId = "e637cf1c-1c11-423e-82eb-b1707f691556"; 
+  async function fetchUmamiStats() {
+    // 1. Umami 的域名 (不要带斜杠)
+    const host = "https://umami.hanye.tech";
+    // 2. 请填入你 Share URL 链接最后的那串 ID (不是 Website ID !)
+    const shareId = "5UZ5ujuyW5WmzMGF"; 
 
-      try {
-        const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`);
-    
-        // 如果返回 401，说明权限有问题
-        if (statsRes.status === 401) {
-          console.error('Umami 权限不足，请确认已开启 Share URL');
-          document.getElementById('umami-pv').innerText = 'Auth Error';
-          return;
-        }
+    try {
+      // 第一步：通过 Share ID 获取授权 Token
+      const tokenRes = await fetch(`${host}/api/share/${shareId}`);
+      if (!tokenRes.ok) throw new Error('Share ID 错误或未开启分享');
+      
+      const tokenData = await tokenRes.json();
+      const token = tokenData.token;
+      const websiteId = tokenData.websiteId; // 自动获取正确的 Website ID
 
-        const statsData = await statsRes.json();
-    // 增加安全读取判断
-        if (statsData && statsData.pageviews) {
-          document.getElementById('umami-pv').innerText = statsData.pageviews.value;
-        }
+      // 第二步：带着 Token 去获取统计数据
+      const authHeaders = { "x-umami-share-token": token };
 
-        const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active`);
-        const onlineData = await onlineRes.json();
-        if (onlineData && onlineData.length > 0) {
-          document.getElementById('umami-online').innerText = onlineData[0].x;
-        }
-      } catch (err) {
-        console.error('Umami 请求异常', err);
-        document.getElementById('umami-pv').innerText = 'Error';
-      }
+      // 获取总访问量
+      const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`, {
+        headers: authHeaders
+      });
+      const statsData = await statsRes.json();
+      document.getElementById('umami-pv').innerText = statsData.pageviews.value;
+
+      // 获取在线人数
+      const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active`, {
+        headers: authHeaders
+      });
+      const onlineData = await onlineRes.json();
+      // 在线人数 (API 返回的是数组)
+      const onlineCount = onlineData[0] ? onlineData[0].x : 0;
+      document.getElementById('umami-online').innerText = onlineCount;
+
+    } catch (err) {
+      console.error('Umami 统计显示出错:', err);
+      document.getElementById('umami-pv').innerText = 'Err';
     }
-  </script>
+  }
+
+  // 启动
+  fetchUmamiStats();
+  // 每 30 秒刷新一次在线人数
+  setInterval(fetchUmamiStats, 30000);
+</script>
   </div>
 </footer>
 
