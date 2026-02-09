@@ -314,25 +314,24 @@
         <span class="icon-coffee"></span>
         00:01
       </div>
-          <div class="site-info">
-            <div class="footer-row">
+          <div class="site-info"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.3 !important; font-size: 13px;">
+          
+            <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 2px;">
               <span>
-                <span class="icon-user"></span>
-                总访客数 <span id="umami-uv">...</span> 人
+                <span class="icon-user"></span> 总访客数 <span id="umami-uv" style="font-weight: 600;">...</span>
               </span>
-              &nbsp;|&nbsp;
+              <span style="opacity: 0.4; font-size: 10px;">|</span>
               <span>
-                <span class="icon-eye"></span>
-                总访问量 <span id="umami-pv">...</span> 次
+                <span class="icon-eye"></span> 总访问量 <span id="umami-pv" style="font-weight: 600;">...</span>
               </span>
             </div>
           
-            <div class="footer-row" style="text-align: center;">
-              <span>
-                <span class="icon-signal"></span>
-                当前 <span id="umami-online" style="color: #27ae60; font-weight: bold;">-</span> 人在线
-              </span>
+            <div style="display: flex; align-items: center;">
+              <span class="icon-signal" style="font-size: 12px; margin-right: 4px;"></span>
+              <span id="umami-online" style="color: #27ae60; font-weight: bold; margin-right: 2px;">-</span> 人在线
             </div>
+          
           </div>
           
           <script>
@@ -346,37 +345,23 @@
                 const tokenData = await tokenRes.json();
                 const authHeaders = { "x-umami-share-token": tokenData.token };
                 const websiteId = tokenData.websiteId;
-
                 const timeNow = Date.now();
 
-                // UV/PV 统计
-                const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${timeNow}`, {
-                  headers: authHeaders
-                });
+                // UV/PV
+                const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${timeNow}`, { headers: authHeaders });
                 const statsData = await statsRes.json();
-                const uv = statsData.visitors?.value || statsData.visitors || 0;
-                const pv = statsData.pageviews?.value || statsData.pageviews || 0;
+                document.getElementById('umami-uv').innerText = statsData.visitors?.value || statsData.visitors || 0;
+                document.getElementById('umami-pv').innerText = statsData.pageviews?.value || statsData.pageviews || 0;
 
-                document.getElementById('umami-uv').innerText = uv;
-                document.getElementById('umami-pv').innerText = pv;
-
-                // 在线人数
+                // Online
                 const fiveMinutesAgo = timeNow - (5 * 60 * 1000);
-                const onlineRes = await fetch(
-                  `${host}/api/websites/${websiteId}/active?startAt=${fiveMinutesAgo}&endAt=${timeNow}&t=${timeNow}`,
-                  { headers: authHeaders }
-                );
+                const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active?startAt=${fiveMinutesAgo}&endAt=${timeNow}&t=${timeNow}`, { headers: authHeaders });
                 const onlineData = await onlineRes.json();
-
-                const onlineCount = onlineData?.visitors || 0;
+                const onlineCount = onlineData?.visitors || (Array.isArray(onlineData) ? onlineData.length : 0);
                 document.getElementById('umami-online').innerText = onlineCount;
 
-              } catch (err) {
-                console.error("❌ Umami 统计错误:", err);
-                document.getElementById('umami-online').innerText = "Err";
-              }
+              } catch (err) { console.error(err); }
             }
-
             fetchUmamiStats();
             setInterval(fetchUmamiStats, 10000);
           </script>
