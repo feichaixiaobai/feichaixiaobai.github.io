@@ -315,91 +315,92 @@
         <span class="icon-coffee"></span>
         00:01
       </div>
-      <div>
-        <!---
-        <span class="icon-eye"></span>
-        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
-        &nbsp;|&nbsp;
-        <span class="icon-user"></span>
-        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
-        
-        <span id="busuanzi_container_site_pv">
-          <span class="icon-eye"></span>
-            本站总访问量&nbsp;<span id="busuanzi_value_site_pv">加载中...</span>&nbsp;次
-        </span>
+          <div class="site-info">
+            <div class="footer-row">
+              <span>© 2024 - 2026 LuoYe</span>
+            </div>
+      
+            <div class="footer-row">
+              <span>
+                <span class="icon-user"></span>
+                总访客数 <span id="umami-uv">...</span> 人
+              </span>
+              &nbsp;|&nbsp;
+              <span>
+                <span class="icon-eye"></span>
+                总访问量 <span id="umami-pv">...</span> 次
+              </span>
+              &nbsp;|&nbsp;
+              <span>
+                <span class="icon-signal"></span>
+                当前 <span id="umami-online" style="color: #27ae60; font-weight: bold;">-</span> 人在线
+              </span>
+            </div>
+      
+            <div style="font-size: 10px; color: #999; margin-top: 5px;">
+              Debug ID: <span id="debug-id">检查中...</span>
+            </div>
+          </div>
+      
+          <script>
+            async function fetchUmamiStats() {
+              const host = "https://umami.hanye.tech";
+              const shareId = "5UZ5ujuyW5WmzMGF";
 
-        &nbsp;|&nbsp;
+              try {
+                // 1. 获取 Token
+                const tokenRes = await fetch(`${host}/api/share/${shareId}`);
+                if (!tokenRes.ok) throw new Error('Share ID 错误');
+                const tokenData = await tokenRes.json();
+                const authHeaders = { "x-umami-share-token": tokenData.token };
+                const websiteId = tokenData.websiteId;
 
-        <span id="busuanzi_container_site_uv">
-          <span class="icon-user"></span>
-            本站总访客数&nbsp;<span id="busuanzi_value_site_uv">加载中...</span>&nbsp;人
-        </span>
-      -->
-        <span>
-          <span class="icon-eye"></span>
-          总访问量 <span id="umami-pv">加载中...</span> 次
-        </span>
-        &nbsp;|&nbsp;
-        <span>
-          <span class="icon-user"></span>
-          当前 <span id="umami-online" style="color: #27ae60; font-weight: bold;">-</span> 人在线
-        </span>
-        </div>
-        
-        <script>
-          async function fetchUmamiStats() {
-            // 1. Umami 的域名 (不要带斜杠)
-            const host = "https://umami.hanye.tech";
-            // 2. Share ID (已填入你提供的)
-            const shareId = "5UZ5ujuyW5WmzMGF";
+                // 【调试步骤】把获取到的 ID 显示在页脚，方便你核对
+                document.getElementById('debug-id').innerText = websiteId;
 
-            try {
-              // 第一步：通过 Share ID 获取授权 Token
-              const tokenRes = await fetch(`${host}/api/share/${shareId}`);
-              if (!tokenRes.ok) throw new Error('Share ID 错误或未开启分享');
+                const timeNow = Date.now();
 
-              const tokenData = await tokenRes.json();
-              const token = tokenData.token;
-              const websiteId = tokenData.websiteId;
+                // 2. 获取统计数据
+                const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${timeNow}`, {
+                  headers: authHeaders
+                });
+                const statsData = await statsRes.json();
+                const uv = (statsData.visitors && statsData.visitors.value) ? statsData.visitors.value : statsData.visitors;
+                const pv = (statsData.pageviews && statsData.pageviews.value) ? statsData.pageviews.value : statsData.pageviews;
 
-              // 第二步：带着 Token 去获取统计数据
-              const authHeaders = { "x-umami-share-token": token };
+                document.getElementById('umami-uv').innerText = uv || 0;
+                document.getElementById('umami-pv').innerText = pv || 0;
 
-              // --- 获取总访问量 ---
-              const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`, {
-                headers: authHeaders
-              });
-              const statsData = await statsRes.json();
+                // 3. 获取在线人数 (已添加防缓存参数 &t=...)
+                // 这里的 &t=${timeNow} 是关键！它强迫浏览器每次都去服务器拿最新数据
+                const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active?t=${timeNow}`, {
+                  headers: authHeaders
+                });
+                const onlineData = await onlineRes.json();
 
-              // 【关键修改】兼容两种数据格式，解决 undefined 问题
-              // 如果数据里有 value 字段就用 value，否则直接用 pageviews
-              const pv = (statsData.pageviews && statsData.pageviews.value)
-                ? statsData.pageviews.value
-                : statsData.pageviews;
+                console.log("Active Data Raw:", onlineData); // F12 看这里
 
-              document.getElementById('umami-pv').innerText = pv || 0;
+                // 兼容所有格式：[{x:1}] 或 {x:1} 或 1
+                let onlineCount = 0;
+                if (Array.isArray(onlineData) && onlineData[0]) {
+                  onlineCount = onlineData[0].x;
+                } else if (typeof onlineData === 'object' && onlineData.x) {
+                  onlineCount = onlineData.x;
+                } else if (typeof onlineData === 'number') {
+                  onlineCount = onlineData;
+                }
 
-              // --- 获取在线人数 ---
-              const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active`, {
-                headers: authHeaders
-              });
-              const onlineData = await onlineRes.json();
+                document.getElementById('umami-online').innerText = onlineCount;
 
-              // 【关键修改】兼容在线人数格式
-              const onlineCount = onlineData[0] ? onlineData[0].x : (typeof onlineData === 'number' ? onlineData : 0);
-              document.getElementById('umami-online').innerText = onlineCount;
-
-            } catch (err) {
-              console.error('Umami 统计显示出错:', err);
-              document.getElementById('umami-pv').innerText = 'Err';
+              } catch (err) {
+                console.error(err);
+                document.getElementById('umami-online').innerText = "Err";
+              }
             }
-          }
 
-          // 启动
-          fetchUmamiStats();
-          // 每 30 秒刷新一次在线人数
-          setInterval(fetchUmamiStats, 30000);
-        </script>
+            fetchUmamiStats();
+            setInterval(fetchUmamiStats, 10000); // 改为 10秒刷新一次
+          </script>
   </div>
 </footer>
 
