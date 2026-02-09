@@ -344,8 +344,8 @@
       
           <script>
             async function fetchUmamiStats() {
-                const host = "https://umami.hanye.tech";
-                const shareId = "5UZ5ujuyW5WmzMGF";
+                const host = "https://xxxx.tech";
+                const shareId = "xxxxx";
 
                 try {
                   const tokenRes = await fetch(`${host}/api/share/${shareId}`);
@@ -369,7 +369,7 @@
                   document.getElementById('umami-uv').innerText = uv;
                   document.getElementById('umami-pv').innerText = pv;
 
-                  // 在线人数（最近5分钟）
+                  // 在线人数
                   const fiveMinutesAgo = timeNow - (5 * 60 * 1000);
                   const onlineRes = await fetch(
                     `${host}/api/websites/${websiteId}/active?startAt=${fiveMinutesAgo}&endAt=${timeNow}&t=${timeNow}`,
@@ -377,17 +377,10 @@
                   );
                   const onlineData = await onlineRes.json();
 
-                  console.log("🔍 Active API Response:", onlineData); // 重点看这里
+                  console.log("🔍 Active API Response:", onlineData);
 
-                  // 解析在线人数
-                  let onlineCount = 0;
-                  if (Array.isArray(onlineData) && onlineData.length > 0) {
-                    onlineCount = onlineData[0].x || onlineData[0].count || 0;
-                  } else if (typeof onlineData === 'object') {
-                    onlineCount = onlineData.x || onlineData.count || onlineData.value || 0;
-                  } else if (typeof onlineData === 'number') {
-                    onlineCount = onlineData;
-                  }
+                  // 根据实际返回的数据结构解析
+                  const onlineCount = onlineData?.visitors || 0;
 
                   document.getElementById('umami-online').innerText = onlineCount;
 
