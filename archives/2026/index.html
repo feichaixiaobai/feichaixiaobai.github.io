@@ -344,62 +344,61 @@
       
           <script>
             async function fetchUmamiStats() {
-              const host = "https://umami.hanye.tech";
-              const shareId = "5UZ5ujuyW5WmzMGF";
+                const host = "https://umami.hanye.tech";
+                const shareId = "5UZ5ujuyW5WmzMGF";
 
-              try {
-                // 1. 获取 Token
-                const tokenRes = await fetch(`${host}/api/share/${shareId}`);
-                if (!tokenRes.ok) throw new Error('Share ID 错误');
-                const tokenData = await tokenRes.json();
-                const authHeaders = { "x-umami-share-token": tokenData.token };
-                const websiteId = tokenData.websiteId;
+                try {
+                  const tokenRes = await fetch(`${host}/api/share/${shareId}`);
+                  if (!tokenRes.ok) throw new Error('Share ID 错误');
+                  const tokenData = await tokenRes.json();
+                  const authHeaders = { "x-umami-share-token": tokenData.token };
+                  const websiteId = tokenData.websiteId;
 
-                // 【调试步骤】把获取到的 ID 显示在页脚，方便你核对
-                document.getElementById('debug-id').innerText = websiteId;
+                  document.getElementById('debug-id').innerText = websiteId;
 
-                const timeNow = Date.now();
+                  const timeNow = Date.now();
 
-                // 2. 获取统计数据
-                const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${timeNow}`, {
-                  headers: authHeaders
-                });
-                const statsData = await statsRes.json();
-                const uv = (statsData.visitors && statsData.visitors.value) ? statsData.visitors.value : statsData.visitors;
-                const pv = (statsData.pageviews && statsData.pageviews.value) ? statsData.pageviews.value : statsData.pageviews;
+                  // UV/PV 统计
+                  const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${timeNow}`, {
+                    headers: authHeaders
+                  });
+                  const statsData = await statsRes.json();
+                  const uv = statsData.visitors?.value || statsData.visitors || 0;
+                  const pv = statsData.pageviews?.value || statsData.pageviews || 0;
 
-                document.getElementById('umami-uv').innerText = uv || 0;
-                document.getElementById('umami-pv').innerText = pv || 0;
+                  document.getElementById('umami-uv').innerText = uv;
+                  document.getElementById('umami-pv').innerText = pv;
 
-                // 3. 获取在线人数 (已添加防缓存参数 &t=...)
-                // 这里的 &t=${timeNow} 是关键！它强迫浏览器每次都去服务器拿最新数据
-                const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active?t=${timeNow}`, {
-                  headers: authHeaders
-                });
-                const onlineData = await onlineRes.json();
+                  // 在线人数（最近5分钟）
+                  const fiveMinutesAgo = timeNow - (5 * 60 * 1000);
+                  const onlineRes = await fetch(
+                    `${host}/api/websites/${websiteId}/active?startAt=${fiveMinutesAgo}&endAt=${timeNow}&t=${timeNow}`,
+                    { headers: authHeaders }
+                  );
+                  const onlineData = await onlineRes.json();
 
-                console.log("Active Data Raw:", onlineData); // F12 看这里
+                  console.log("🔍 Active API Response:", onlineData); // 重点看这里
 
-                // 兼容所有格式：[{x:1}] 或 {x:1} 或 1
-                let onlineCount = 0;
-                if (Array.isArray(onlineData) && onlineData[0]) {
-                  onlineCount = onlineData[0].x;
-                } else if (typeof onlineData === 'object' && onlineData.x) {
-                  onlineCount = onlineData.x;
-                } else if (typeof onlineData === 'number') {
-                  onlineCount = onlineData;
+                  // 解析在线人数
+                  let onlineCount = 0;
+                  if (Array.isArray(onlineData) && onlineData.length > 0) {
+                    onlineCount = onlineData[0].x || onlineData[0].count || 0;
+                  } else if (typeof onlineData === 'object') {
+                    onlineCount = onlineData.x || onlineData.count || onlineData.value || 0;
+                  } else if (typeof onlineData === 'number') {
+                    onlineCount = onlineData;
+                  }
+
+                  document.getElementById('umami-online').innerText = onlineCount;
+
+                } catch (err) {
+                  console.error("❌ Umami 统计错误:", err);
+                  document.getElementById('umami-online').innerText = "Err";
                 }
-
-                document.getElementById('umami-online').innerText = onlineCount;
-
-              } catch (err) {
-                console.error(err);
-                document.getElementById('umami-online').innerText = "Err";
               }
-            }
 
-            fetchUmamiStats();
-            setInterval(fetchUmamiStats, 10000); // 改为 10秒刷新一次
+              fetchUmamiStats();
+              setInterval(fetchUmamiStats, 10000);
           </script>
   </div>
 </footer>
