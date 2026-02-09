@@ -314,6 +314,60 @@
         <span class="icon-coffee"></span>
         00:01
       </div>
+      <div>
+        <!---
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+        
+        <span id="busuanzi_container_site_pv">
+          <span class="icon-eye"></span>
+            本站总访问量&nbsp;<span id="busuanzi_value_site_pv">加载中...</span>&nbsp;次
+        </span>
+
+        &nbsp;|&nbsp;
+
+        <span id="busuanzi_container_site_uv">
+          <span class="icon-user"></span>
+            本站总访客数&nbsp;<span id="busuanzi_value_site_uv">加载中...</span>&nbsp;人
+        </span>
+      -->
+        <span>
+          <span class="icon-eye"></span>
+            总访问量 <span id="umami-pv">加载中...</span> 次
+        </span>
+        &nbsp;|&nbsp;
+        <span>
+          <span class="icon-user"></span>
+            当前 <span id="umami-online" style="color: #27ae60; font-weight: bold;">0</span> 人在线
+        </span>
+      </div>
+
+        <script>
+    async function fetchUmamiStats() {
+      const host = "https://umami.hanye.tech"; // 你的 Umami 反代地址
+      const websiteId = "e637cf1c-1c11-423e-82eb-b1707f691556"; // 你的 Website ID
+      
+      try {
+        // 获取总访问量 (从创建至今)
+        const statsRes = await fetch(`${host}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`);
+        const statsData = await statsRes.json();
+        document.getElementById('umami-pv').innerText = statsData.pageviews.value;
+
+        // 获取当前在线人数 (最近 5 分钟活跃访客)
+        const onlineRes = await fetch(`${host}/api/websites/${websiteId}/active`);
+        const onlineData = await onlineRes.json();
+        document.getElementById('umami-online').innerText = onlineData[0].x;
+      } catch (err) {
+        console.error('Umami 统计加载失败', err);
+      }
+    }
+    // 初次加载并每隔 30 秒刷新一次在线人数
+    fetchUmamiStats();
+    setInterval(fetchUmamiStats, 30000);
+  </script>
   </div>
 </footer>
 
@@ -510,6 +564,9 @@
     }
   }
 </script>
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
 
 
 <script>
